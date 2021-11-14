@@ -3,6 +3,7 @@ const dotenv = require('dotenv')
 
 //app require
 const appRoutes = require('./routes')
+const notFound = require('./middlewares/404')
 
 //app config
 const app = express()
@@ -12,6 +13,7 @@ const port = process.env.PORT || 3000
 //app middlewares
 app.use(express.json())
 app.use('/api/v1',appRoutes)
+app.use(notFound)
 //app routes
 
 //db Connect
