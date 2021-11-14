@@ -5,6 +5,7 @@ const dotenv = require('dotenv')
 const appRoutes = require('./routes')
 const notFound = require('./middlewares/404')
 const errorHandler  = require('./middlewares/errorHandler')
+const dbConnect =require('./db/dbConnect')
 
 //app config
 const app = express()
@@ -17,14 +18,12 @@ app.use('/api/v1',appRoutes)
 app.use(notFound)
 app.use(errorHandler)
 //app routes
-
-//db Connect
-
-//app listen
 // app.get('/',(req,res)=>{
 //  res.send('Wellcome To App')
 // })
-
+//db Connect
+dbConnect(process.env.MONGO_URI)
+// app listen
 app.listen(port,()=>{
     console.log(`Server Start At Port ${port}`)
 })

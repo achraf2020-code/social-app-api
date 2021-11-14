@@ -1,5 +1,3 @@
-
-
 const errorHandler = (err,req,res,next)=>{
     const customError = {
         statusCodes : err.statusCode || 500 ,
