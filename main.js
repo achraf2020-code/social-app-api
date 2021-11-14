@@ -4,6 +4,7 @@ const dotenv = require('dotenv')
 //app require
 const appRoutes = require('./routes')
 const notFound = require('./middlewares/404')
+const errorHandler  = require('./middlewares/errorHandler')
 
 //app config
 const app = express()
@@ -14,6 +15,7 @@ const port = process.env.PORT || 3000
 app.use(express.json())
 app.use('/api/v1',appRoutes)
 app.use(notFound)
+app.use(errorHandler)
 //app routes
 
 //db Connect
