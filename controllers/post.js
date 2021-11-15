@@ -6,14 +6,13 @@ module.exports = {
     getAllPosts : async(req,res)=>{
         const {id} = req.user
         // console.log(req.user)
-        const posts = await Post.find({createdBy:id})
+        const posts = await Post.find({createdBy:id}).sort('-createdAt')
         res.status(StatusCodes.OK).json({posts})
-        res.send('getAllPosts')
+        // res.send('getAllPosts')
     },
     getOnePost : async(req,res)=>{
         const postId = req.params.id
         const userId = req.user.id
-
         const post = await Post.findOne({_id:postId,createdBy:userId})
         if(!post){
             throw new NotFoundError ('You have no post')
@@ -27,11 +26,7 @@ module.exports = {
             createdBy:req.user.id
         }
         const post = await Post.create(postTemp)
-        if(!post){
-            throw BadRequestError('Post must have a text')
-        }
         res.status(StatusCodes.OK).json({post})
-        res.send('Create post')
     },
     updateOnePost : async(req,res) =>{
         const postId = req.params.id

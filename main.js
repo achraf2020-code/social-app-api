@@ -16,7 +16,7 @@ const port = process.env.PORT || 3000
 app.use(express.json())
 app.use('/api/v1',appRoutes)
 app.use(notFound)
-app.use(errorHandler)
+// app.use(errorHandler)
 //app routes
 // app.get('/',(req,res)=>{
 //  res.send('Wellcome To App')
