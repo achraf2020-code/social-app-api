@@ -5,6 +5,10 @@ const errorHandler = (err,req,res,next)=>{
         statusCode : err.statusCode || 500 ,
         message    : err.message    || 'Somthing Went Wrong!'
     }
+    if(err.name = "CastError"){
+        customError.message = `Wrong id!`
+        customError.statusCode = StatusCodes.NOT_FOUND
+    }
     if(err.name === "ValidationError"){ 
         customError.message = Object.values(err.errors)
             .map((item)=>item.message)
