@@ -2,6 +2,7 @@
 
 module.exports = {
     getAllPosts : async(req,res)=>{
+        console.log(req.user)
         res.send('getAllPosts')
     },
     getOnePost : async(req,res)=>{
